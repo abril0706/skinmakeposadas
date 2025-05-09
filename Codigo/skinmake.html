@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin&Make - Maquillaje y estética</title>
+    <meta name="description" content="Tienda oficial de Skin&Make. Productos de maquillaje profesional. Compra segura con Mercado Pago, PayPal y efectivo.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="normalize" href="normalize.css">
+   <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFB6C1',
+                        secondary: '#FFD1DC',
+                        accent: '#FF69B4',
+                        dark: '#8B5F8D',
+                        light: '#FFF0F5'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        .cart-item:hover {
+            background-color: #FFF2F5;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #FF6B8B;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #FFD6E0 0%, #FF9BB3 100%);
+        }
+        .search-container {
+            transition: all 0.3s ease;
+        }
+        .search-container.focused {
+            box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-pastel font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-2xl font-bold text-accent flex items-center">
+                    <i class="fas fa-paint-brush mr-2"></i>
+                    Skin<span class="text-dark">&</span>Make
+                </a>
+            </div>
+            
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="cart-toggle" class="relative text-gray-700 hover:text-accent">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <button class="md:hidden text-gray-700" id="mobile-menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Realza tu belleza con Skin&Make</h1>
+            <p class="text-xl text-white mb-8">Productos de maquillaje y estética </p>
+            <a href="#productos" class="bg-white text-accent font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 inline-block">Ver productos</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Nuestros Productos</h2>
+            
+            <!-- Search Bar -->
+            <div class="max-w-md mx-auto mb-12 relative">
+                <div id="search-container" class="search-container flex items-center bg-white border-2 border-gray-200 rounded-full px-4 py-2 transition-all duration-300">
+                    <i class="fas fa-search text-gray-400 mr-2"></i>
+                    <input type="text" id="product-search" placeholder="Buscar productos..." class="w-full outline-none text-gray-700 placeholder-gray-400">
+                    <button id="clear-search" class="text-gray-400 hover:text-accent hidden">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="search-results" class="absolute z-10 w-full mt-1 bg-white rounded-lg shadow-lg hidden max-h-60 overflow-y-auto"></div>
+            </div>
+            
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Voluminizadores 4 Angeles" data-category="Labios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="voluminizador 4 angeles.jpg" alt="Voluminizador 4 Angeles" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Voluminizador 4 Angeles</h3>
+                        <p class="text-gray-600 text-sm mb-3">Para unos labios WOW</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$2300</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="1" data-name="voluminizador 4 angeles" data-price="2300" data-image="voluminizador 4 angeles.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Esponjas Fashion" data-category="rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="esponjas fashion.jpg" alt="Esponjas Fashion" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Esponjas Fashion</h3>
+                        <p class="text-gray-600 text-sm mb-3">Colores surtidos</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$800</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="2" data-name="Esponja Fashion" data-price="800" data-image="esponjas fashion.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Rubor Kitty" data-category="Rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="rubor en barra.jpg">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Rubor Kitty</h3>
+                        <p class="text-gray-600 text-sm mb-3">6 tonos</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$2.800</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="3" data-name="Rubor Kitty" data-price="2800" data-image="rubor en barra.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Mascara de pestañas Prodigious" data-category="Ojos">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="mascara para pestañas prodigious.jpg" alt="Mascara de pestañas Prodigious" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Mascara de pestañas Prodigious</h3>
+                        <p class="text-gray-600 text-sm mb-3">Larga duración + Volumen</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$2000</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="4" data-name="Mascara para pestañas Prodigious" data-price="2000" data-image="mascara para pestañas prodigious.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Espejito redondo" data-category="Accesorios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="espejito redondo.jpg" alt="Espejito redondo" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Espejito redondo</h3>
+                        <p class="text-gray-600 text-sm mb-3">De mano, ideal para la cartera</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1000</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="5" data-name="Espejito redondo" data-price="1000" data-image="espejito redondo.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Parches de colageno para ojeras" data-category="rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="parches ojera colageno.png" alt="Parches de colageno para ojeras" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Parches de colageno para ojeras</h3>
+                        <p class="text-gray-600 text-sm mb-3"></p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$600</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="6" data-name="Parches de colageno para ojeras" data-price="600" data-image="parches ojera colageno.png">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Perfiladores" data-category="accesorios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="perfiladores.webp" alt="Perfiladores" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Perfiladores</h3>
+                        <p class="text-gray-600 text-sm mb-3">x3</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1200</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="7" data-name="Perfiladores" data-price="1200" data-image="perfiladores.webp">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Lips Gloss Moist" data-category="Labios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="gloss moist.jpg" alt="Lip Gloss Moist" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Lip Gloss Moist</h3>
+                        <p class="text-gray-600 text-sm mb-3">Frutales</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1600</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="8" data-name="Lip Gloss Moist" data-price="1600" data-image="gloss moist.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 9 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Corrector Kitty" data-category="rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="cprrector kitty.jpeg" alt="Corrector Kitty" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Corrector Kitty</h3>
+                        <p class="text-gray-600 text-sm mb-3">Alta cobertura</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1700</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="9" data-name="Corrector Kitty" data-price="1700" data-image="cprrector kitty.jpeg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 10 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Oil Roll-On Flower" data-category="Labios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="oil flower.webp" alt="Oil Roll-On Flower" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Oil Roll-On Flower</h3>
+                        <p class="text-gray-600 text-sm mb-3">Frutales</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1800</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="10" data-name="Oil Roll-On Flower" data-price="1800" data-image="oil flower.webp">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 11 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Polvo de hadas" data-category="Accesorios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="polvo de hadas.jpg" alt="Polvo de hadas" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Polvo de hadas</h3>
+                        <p class="text-gray-600 text-sm mb-3">Brilla más que nunca</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$2600</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="11" data-name="Polvo de hadas" data-price="2600" data-image="polvo de hadas.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 12 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Mascarillas para rostro" data-category="Rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="mascarillas animadas.jpeg" alt="Mascarillas para rostro" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Mascarillas para rostro</h3>
+                        <p class="text-gray-600 text-sm mb-3">Modelos surtidos</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1200</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="12" data-name="Mascarillas para rostro" data-price="1200" data-image="mascarillas animadas.jpeg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-xl font-bold text-accent mb-4">Encuéntranos en redes</h3>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="https://www.instagram.com/skin.makeposadas?igsh=MTFzbHNxb3NwNGFkNQ%3D%3D&utm_source=qr" class="bg-primary text-white p-3 rounded-full hover:bg-accent transition" target="_blank">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@skinmake_posadas?_t=ZM-8w7A3PtGMju&_r=1" class="bg-primary text-white p-3 rounded-full hover:bg-accent transition" target="_blank">
+                            <i class="fab fa-tiktok text-xl"></i>
+                        </a>
+                        <a href="https://wa.me/5493764415624" class="bg-primary text-white p-3 rounded-full hover:bg-accent transition" target="_blank">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-accent mb-4">Métodos de pago</h3>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fab fa-cc-paypal text-2xl text-blue-500 mr-2"></i>
+                            <span>PayPal</span>
+                        </div>
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-money-bill-wave text-2xl text-green-500 mr-2"></i>
+                            <span>Efectivo</span>
+                        </div>
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-credit-card text-2xl text-blue-400 mr-2"></i>
+                            <span>Mercado Pago</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-accent mb-4">Envíos</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-bicycle text-primary mr-2"></i>
+                            <span>Envíos locales en Posadas (coordinado por WhatsApp)</span>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-1/3 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Tu Carrito</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-accent">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="space-y-4 mb-6">
+                <!-- Cart items will be added here dynamically -->
+                <div class="text-center py-8 text-gray-500" id="empty-cart-message">
+                    <i class="fas fa-shopping-cart text-4xl mb-2"></i>
+                    <p>Tu carrito está vacío</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-4 mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-700">Subtotal:</span>
+                    <span id="cart-subtotal" class="font-bold">$0</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-700">Envío:</span>
+                    <div>
+                        <select id="shipping-option" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                            <option value="local">Envío local (Posadas) - A coordinar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-between text-lg font-bold mt-4">
+                    <span>Total:</span>
+                    <span id="cart-total">$0</span>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="font-bold text-gray-700 mb-2">Método de pago</h4>
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="radio" id="mercado-pago" name="payment" value="mercado-pago" class="mr-2" checked>
+                        <label for="mercado-pago" class="flex items-center">
+                            <i class="fab fa-cc-paypal text-xl text-blue-500 mr-2"></i>
+                            Mercado Pago
+                        </label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" id="paypal" name="payment" value="paypal" class="mr-2">
+                        <label for="paypal" class="flex items-center">
+                            <i class="fab fa-cc-paypal text-xl text-blue-500 mr-2"></i>
+                            PayPal
+                        </label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" id="efectivo" name="payment" value="efectivo" class="mr-2">
+                        <label for="efectivo" class="flex items-center">
+                            <i class="fas fa-money-bill-wave text-xl text-green-500 mr-2"></i>
+                            Efectivo 
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="transfer-info" class="bg-gray-100 p-4 rounded mb-6 hidden">
+                <h4 class="font-bold text-gray-700 mb-2">Datos para transferencia</h4>
+                <div class="space-y-2">
+                    <div>
+                        <span class="text-gray-600">Titular:</span>
+                        <span class="font-bold">Abril Tabarez</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">CBU:</span>
+                        <span class="font-bold">0000003100075284014867</span>
+                        <button class="ml-2 text-primary hover:text-accent" onclick="copyToClipboard('0000003100075284014867')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="checkout-btn" class="w-full bg-accent text-white py-3 rounded-lg font-bold hover:bg-primary transition">
+                Finalizar Compra
+            </button>
+        </div>
+    </div>
+    
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp text-primary mr-2"></i>
+                            <a href="https://wa.me/5493764415624" class="text-gray-400 hover:text-primary transition">+54 9 3764 415624</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <span class="text-gray-400">Posadas, Misiones</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 Skin&Make. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Cart functionality
+        const cartToggle = document.getElementById('cart-toggle');
+        const closeCart = document.getElementById('close-cart');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartTotal = document.getElementById('cart-total');
+        const shippingOption = document.getElementById('shipping-option');
+        const paymentMethods = document.querySelectorAll('input[name="payment"]');
+        const transferInfo = document.getElementById('transfer-info');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        
+        let cart = [];
+        
+        // Toggle cart sidebar
+        cartToggle.addEventListener('click', () => {
+            cartSidebar.classList.remove('translate-x-full');
+            cartOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        cartOverlay.addEventListener('click', () => {
+            cartSidebar.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.getAttribute('data-id');
+                const productName = button.getAttribute('data-name');
+                const productPrice = parseInt(button.getAttribute('data-price'));
+                const productImage = button.getAttribute('data-image');
+                
+                addToCart(productId, productName, productPrice, productImage);
+                
+                // Show cart sidebar when adding first item
+                if (cart.length === 1) {
+                    cartSidebar.classList.remove('translate-x-full');
+                    cartOverlay.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+        }
+        
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+        
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items display
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartItemsContainer.innerHTML = '';
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                
+                let itemsHTML = '';
+                cart.forEach(item => {
+                    itemsHTML += `
+                        <div class="cart-item bg-gray-50 p-3 rounded-lg flex items-center">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-bold text-gray-800">${item.name}</h4>
+                                <div class="flex justify-between items-center mt-1">
+                                    <div class="flex items-center">
+                                        <button class="quantity-btn text-gray-500 hover:text-accent" data-id="${item.id}" data-action="decrease">
+                                            <i class="fas fa-minus text-xs"></i>
+                                        </button>
+                                        <span class="mx-2">${item.quantity}</span>
+                                        <button class="quantity-btn text-gray-500 hover:text-accent" data-id="${item.id}" data-action="increase">
+                                            <i class="fas fa-plus text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <span class="font-bold text-accent">$${(item.price * item.quantity).toLocaleString()}</span>
+                                </div>
+                            </div>
+                            <button class="remove-btn text-gray-400 hover:text-red-500 ml-2" data-id="${item.id}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+                
+                cartItemsContainer.innerHTML = itemsHTML;
+                
+                // Add event listeners to new buttons
+                document.querySelectorAll('.quantity-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.getAttribute('data-id');
+                        const action = button.getAttribute('data-action');
+                        
+                        const item = cart.find(item => item.id === id);
+                        
+                        if (action === 'increase') {
+                            item.quantity += 1;
+                        } else if (action === 'decrease' && item.quantity > 1) {
+                            item.quantity -= 1;
+                        }
+                        
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.getAttribute('data-id');
+                        removeFromCart(id);
+                    });
+                });
+            }
+            
+            // Update subtotal and total
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            cartSubtotal.textContent = `$${subtotal.toLocaleString()}`;
+            
+            const shippingCost = shippingOption.value === 'national' ? 1500 : 0;
+            const total = subtotal + shippingCost;
+            cartTotal.textContent = `$${total.toLocaleString()}`;
+        }
+        
+        // Shipping option change
+        shippingOption.addEventListener('change', () => {
+            updateCart();
+        });
+        
+        // Payment method change
+        paymentMethods.forEach(method => {
+            method.addEventListener('change', () => {
+                if (method.value === 'efectivo') {
+                    transferInfo.classList.remove('hidden');
+                } else {
+                    transferInfo.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Checkout button
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const shippingMethod = shippingOption.value;
+            
+            let message = `¡Hola Skin&Make! Quiero realizar el siguiente pedido:\n\n`;
+            
+            cart.forEach(item => {
+                message += `${item.name} x ${item.quantity} - $${(item.price * item.quantity).toLocaleString()}\n`;
+            });
+            
+            message += `\nSubtotal: $${cartSubtotal.textContent.replace('$', '')}\n`;
+            
+            if (shippingMethod === 'national') {
+            } else {
+                message += `Envío: A coordinar\n`;
+            }
+            
+            message += `Total: $${cartTotal.textContent.replace('$', '')}\n\n`;
+            message += `Método de pago: ${paymentMethod === 'mercado-pago' ? 'Mercado Pago' : paymentMethod === 'paypal' ? 'PayPal' : 'Efectivo (Transferencia)'}\n`;
+            
+            if (paymentMethod === 'efectivo') {
+                message += `\nDatos para transferencia:\n`;
+                message += `Titular: Abril Tabarez\n`;
+                message += `CBU: 0000003100075284014867\n`;
+            }
+            
+            message += `\nPor favor confirmame disponibilidad y forma de envío. ¡Gracias!`;
+            
+            const whatsappUrl = `https://wa.me/5493764415624?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copiado al portapapeles: ' + text);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+        
+        // Search functionality
+        const searchInput = document.getElementById('product-search');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const searchResults = document.getElementById('search-results');
+        const searchContainer = document.getElementById('search-container');
+        const productsGrid = document.getElementById('products-grid');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        // Focus styles for search container
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('focused');
+        });
+        
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('focused');
+        });
+        
+        // Clear search button
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value.length > 0) {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+                searchResults.classList.add('hidden');
+                // Show all products when search is cleared
+                productCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            }
+        });
+        
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            searchResults.classList.add('hidden');
+            // Show all products when search is cleared
+            productCards.forEach(card => {
+                card.style.display = 'block';
+            });
+        });
+        
+        // Search functionality
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            if (searchTerm.length === 0) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+            
+            // Filter products
+            const filteredProducts = Array.from(productCards).filter(card => {
+                const productName = card.getAttribute('data-name').toLowerCase();
+                const productCategory = card.getAttribute('data-category').toLowerCase();
+                return productName.includes(searchTerm) || productCategory.includes(searchTerm);
+            });
+            
+            // Update search results dropdown
+            if (filteredProducts.length > 0) {
+                let resultsHTML = '';
+                
+                filteredProducts.forEach(card => {
+                    const productName = card.querySelector('h3').textContent;
+                    const productPrice = card.querySelector('span.font-bold').textContent;
+                    const productImage = card.querySelector('img').src;
+                    
+                    resultsHTML += `
+                        <div class="p-3 hover:bg-gray-100 cursor-pointer flex items-center border-b border-gray-100 last:border-0" 
+                             data-id="${card.getAttribute('data-id')}">
+                            <img src="${productImage}" alt="${productName}" class="w-10 h-10 object-cover rounded mr-3">
+                            <div>
+                                <div class="font-medium">${productName}</div>
+                                <div class="text-sm text-accent">${productPrice}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                searchResults.innerHTML = resultsHTML;
+                searchResults.classList.remove('hidden');
+                
+                // Add click event to search results
+                searchResults.querySelectorAll('div').forEach(result => {
+                    result.addEventListener('click', () => {
+                        const productId = result.getAttribute('data-id');
+                        const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
+                        
+                        // Scroll to product
+                        productCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Highlight product
+                        productCard.classList.add('ring-2', 'ring-accent');
+                        setTimeout(() => {
+                            productCard.classList.remove('ring-2', 'ring-accent');
+                        }, 2000);
+                        
+                        // Close search results
+                        searchResults.classList.add('hidden');
+                    });
+                });
+            } else {
+                searchResults.innerHTML = '<div class="p-3 text-gray-500">No se encontraron productos</div>';
+                searchResults.classList.remove('hidden');
+            }
+            
+            // Filter products in grid
+            productCards.forEach(card => {
+                const productName = card.getAttribute('data-name').toLowerCase();
+                const productCategory = card.getAttribute('data-category').toLowerCase();
+                
+                if (productName.includes(searchTerm) || productCategory.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target)) {
+                searchResults.classList.add('hidden');
+            }
+        });
+        
+        // Initialize cart
+        updateCart();
+    </script>
+</body>
+</html>
+

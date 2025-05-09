@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin&Make - Maquillaje y estética</title>
+    <meta name="description" content="Tienda oficial de Skin&Make. Productos de maquillaje profesional. Compra segura con Mercado Pago, PayPal y efectivo.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFB6C1',
+                        secondary: '#FFD1DC',
+                        accent: '#FF69B4',
+                        dark: '#8B5F8D',
+                        light: '#FFF0F5'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        .cart-item:hover {
+            background-color: #FFF2F5;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #FF6B8B;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #FFD6E0 0%, #FF9BB3 100%);
+        }
+        .search-container {
+            transition: all 0.3s ease;
+        }
+        .search-container.focused {
+            box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-pastel font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-2xl font-bold text-accent flex items-center">
+                    <i class="fas fa-paint-brush mr-2"></i>
+                    Skin<span class="text-dark">&</span>Make
+                </a>
+            </div>
+        
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="cart-toggle" class="relative text-gray-700 hover:text-accent">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <button class="md:hidden text-gray-700" id="mobile-menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#inicio" class="block py-2 text-gray-700 hover:text-accent">Inicio</a>
+            <a href="#productos" class="block py-2 text-gray-700 hover:text-accent">Productos</a>
+            <a href="#contacto" class="block py-2 text-gray-700 hover:text-accent">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Realza tu belleza con Skin&Make</h1>
+            <p class="text-xl text-white mb-8">Productos de maquillaje y estética </p>
+            <a href="#productos" class="bg-white text-accent font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 inline-block">Ver productos</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Nuestros Productos</h2>
+            
+            <!-- Search Bar -->
+            <div class="max-w-md mx-auto mb-12 relative">
+                <div id="search-container" class="search-container flex items-center bg-white border-2 border-gray-200 rounded-full px-4 py-2 transition-all duration-300">
+                    <i class="fas fa-search text-gray-400 mr-2"></i>
+                    <input type="text" id="product-search" placeholder="Buscar productos..." class="w-full outline-none text-gray-700 placeholder-gray-400">
+                    <button id="clear-search" class="text-gray-400 hover:text-accent hidden">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="search-results" class="absolute z-10 w-full mt-1 bg-white rounded-lg shadow-lg hidden max-h-60 overflow-y-auto"></div>
+            </div>
+            
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Voluminizadores 4 Angeles" data-category="Labios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://www.dd2.com.ar/image/cache/catalog/M%20-%202944/Giuli%20maquillaje%20(27)-1080x1080.jpg" alt="Voluminizador 4 Angeles" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Voluminizador 4 Angeles</h3>
+                        <p class="text-gray-600 text-sm mb-3">Para unos labios WOW</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$2300</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="1" data-name="Voluminizador 4 Angeles" data-price="2300" data-image="https://www.dd2.com.ar/image/cache/catalog/M%20-%202944/Giuli%20maquillaje%20(27)-1080x1080.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Esponjas Fashion" data-category="rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkJhpov6hy9q2xB2n_BECd2Q2TsTznErOfoQ&s" alt="Esponjas Fashion" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Esponjas Fashion</h3>
+                        <p class="text-gray-600 text-sm mb-3">Colores surtidos</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$800</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="2" data-name="Esponja Fashion" data-price="800" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkJhpov6hy9q2xB2n_BECd2Q2TsTznErOfoQ&s">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Rubor Kitty" data-category="Rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://kromaspace.com/wp-content/uploads/2024/08/rubor-barra-makeup-hello-kitty-9.jpg" alt="Rubor Kitty" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Rubor Kitty</h3>
+                        <p class="text-gray-600 text-sm mb-3">6 tonos</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$2.800</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="3" data-name="Rubor Kitty" data-price="2800" data-image="https://kromaspace.com/wp-content/uploads/2024/08/rubor-barra-makeup-hello-kitty-9.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Mascara de pestañas Prodigious" data-category="Ojos">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://sc04.alicdn.com/kf/Hade6fd66ec7b477981dab893add9e28cC.jpg" alt="Mascara de pestañas Prodigious" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Mascara de pestañas Prodigious</h3>
+                        <p class="text-gray-600 text-sm mb-3">Larga duración + Volumen</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$2000</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="4" data-name="Mascara para pestañas Prodigious" data-price="2000" data-image="https://sc04.alicdn.com/kf/Hade6fd66ec7b477981dab893add9e28cC.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Espejito redondo" data-category="Accesorios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://tiendaprado.com/13107-thickbox_default/espejo-de-bolsillo-redondo-la-familia-de-felipe-iv-o-las-meninas-detalle-infanta.jpg" alt="Espejito redondo" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Espejito redondo</h3>
+                        <p class="text-gray-600 text-sm mb-3">De mano, ideal para la cartera</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1000</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="5" data-name="Espejito redondo" data-price="1000" data-image="https://tiendaprado.com/13107-thickbox_default/espejo-de-bolsillo-redondo-la-familia-de-felipe-iv-o-las-meninas-detalle-infanta.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Parches de colageno para ojeras" data-category="rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://droppers.com.ar/media/catalog/product/cache/67600a7cb63ab5e7d82f8b09de44ce0c/g/-/g-ojerascrystal_2__2.png" alt="Parches de colageno para ojeras" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Parches de colageno para ojeras</h3>
+                        <p class="text-gray-600 text-sm mb-3"></p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$600</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="6" data-name="Parches de colageno para ojeras" data-price="600" data-image="https://droppers.com.ar/media/catalog/product/cache/67600a7cb63ab5e7d82f8b09de44ce0c/g/-/g-ojerascrystal_2__2.png">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Perfiladores" data-category="accesorios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_601232-MLA51490495332_092022-O.webp" alt="Perfiladores" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Perfiladores</h3>
+                        <p class="text-gray-600 text-sm mb-3">x3</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1200</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="7" data-name="Perfiladores" data-price="1200" data-image="https://http2.mlstatic.com/D_NQ_NP_601232-MLA51490495332_092022-O.webp">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Lips Gloss Moist" data-category="Labios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://sc04.alicdn.com/kf/H8994c8ae021044de9e237bca8873c3591.jpg" alt="Lip Gloss Moist" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Lip Gloss Moist</h3>
+                        <p class="text-gray-600 text-sm mb-3">Frutales</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1600</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="8" data-name="Lip Gloss Moist" data-price="1600" data-image="https://sc04.alicdn.com/kf/H8994c8ae021044de9e237bca8873c3591.jpg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 9 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Corrector Kitty" data-category="rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://weland.com.ar/wp-content/uploads/2024/12/IMG_0730.jpeg" alt="Corrector Kitty" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Corrector Kitty</h3>
+                        <p class="text-gray-600 text-sm mb-3">Alta cobertura</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1700</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="9" data-name="Corrector Kitty" data-price="1700" data-image="https://weland.com.ar/wp-content/uploads/2024/12/IMG_0730.jpeg">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 10 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Oil Roll-On Flower" data-category="Labios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_848295-MLA73593846286_122023-O.webp" alt="Oil Roll-On Flower" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Oil Roll-On Flower</h3>
+                        <p class="text-gray-600 text-sm mb-3">Frutales</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1800</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="10" data-name="Oil Roll-On Flower" data-price="1800" data-image="https://http2.mlstatic.com/D_NQ_NP_848295-MLA73593846286_122023-O.webp">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 11 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Polvo de hadas" data-category="Accesorios">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="data:image/jpeg;base64,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" alt="Polvo de hadas" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Polvo de hadas</h3>
+                        <p class="text-gray-600 text-sm mb-3">Brilla más que nunca</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$2600</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="11" data-name="Polvo de hadas" data-price="2600" data-image="data:image/jpeg;base64,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">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 12 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300" data-name="Mascarillas para rostro" data-category="Rostro">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://ldmakeup.com.ar/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-09-at-12.18.33-1-rotated.jpeg?v=1744212254" alt="Mascarillas para rostro" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Mascarillas para rostro</h3>
+                        <p class="text-gray-600 text-sm mb-3">Modelos surtidos</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-accent">$1200</span>
+                            <button class="add-to-cart bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-accent transition" data-id="12" data-name="Mascarillas para rostro" data-price="1200" data-image="https://ldmakeup.com.ar/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-09-at-12.18.33-1-rotated.jpeg?v=1744212254">
+                                <i class="fas fa-cart-plus mr-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-xl font-bold text-accent mb-4">Encuéntranos en redes</h3>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="https://www.instagram.com/skin.makeposadas?igsh=MTFzbHNxb3NwNGFkNQ%3D%3D&utm_source=qr" class="bg-primary text-white p-3 rounded-full hover:bg-accent transition" target="_blank">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@skinmake_posadas?_t=ZM-8w7A3PtGMju&_r=1" class="bg-primary text-white p-3 rounded-full hover:bg-accent transition" target="_blank">
+                            <i class="fab fa-tiktok text-xl"></i>
+                        </a>
+                        <a href="https://wa.me/5493764415624" class="bg-primary text-white p-3 rounded-full hover:bg-accent transition" target="_blank">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-accent mb-4">Métodos de pago</h3>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fab fa-cc-paypal text-2xl text-blue-500 mr-2"></i>
+                            <span>PayPal</span>
+                        </div>
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-money-bill-wave text-2xl text-green-500 mr-2"></i>
+                            <span>Efectivo</span>
+                        </div>
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-credit-card text-2xl text-blue-400 mr-2"></i>
+                            <span>Mercado Pago</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-accent mb-4">Envíos</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-bicycle text-primary mr-2"></i>
+                            <span>Envíos locales en Posadas (coordinado por WhatsApp)</span>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-1/3 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Tu Carrito</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-accent">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="space-y-4 mb-6">
+                <!-- Cart items will be added here dynamically -->
+                <div class="text-center py-8 text-gray-500" id="empty-cart-message">
+                    <i class="fas fa-shopping-cart text-4xl mb-2"></i>
+                    <p>Tu carrito está vacío</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-4 mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-700">Subtotal:</span>
+                    <span id="cart-subtotal" class="font-bold">$0</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-700">Envío:</span>
+                    <div>
+                        <select id="shipping-option" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                            <option value="local">Envío local (Posadas) - A coordinar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-between text-lg font-bold mt-4">
+                    <span>Total:</span>
+                    <span id="cart-total">$0</span>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="font-bold text-gray-700 mb-2">Método de pago</h4>
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="radio" id="mercado-pago" name="payment" value="mercado-pago" class="mr-2" checked>
+                        <label for="mercado-pago" class="flex items-center">
+                            <i class="fab fa-cc-paypal text-xl text-blue-500 mr-2"></i>
+                            Mercado Pago
+                        </label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" id="paypal" name="payment" value="paypal" class="mr-2">
+                        <label for="paypal" class="flex items-center">
+                            <i class="fab fa-cc-paypal text-xl text-blue-500 mr-2"></i>
+                            PayPal
+                        </label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" id="efectivo" name="payment" value="efectivo" class="mr-2">
+                        <label for="efectivo" class="flex items-center">
+                            <i class="fas fa-money-bill-wave text-xl text-green-500 mr-2"></i>
+                            Efectivo 
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="transfer-info" class="bg-gray-100 p-4 rounded mb-6 hidden">
+                <h4 class="font-bold text-gray-700 mb-2">Datos para transferencia</h4>
+                <div class="space-y-2">
+                    <div>
+                        <span class="text-gray-600">Titular:</span>
+                        <span class="font-bold">Abril Tabarez</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">CBU:</span>
+                        <span class="font-bold">0000003100075284014867</span>
+                        <button class="ml-2 text-primary hover:text-accent" onclick="copyToClipboard('0000003100075284014867')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="checkout-btn" class="w-full bg-accent text-white py-3 rounded-lg font-bold hover:bg-primary transition">
+                Finalizar Compra
+            </button>
+        </div>
+    </div>
+    
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp text-primary mr-2"></i>
+                            <a href="https://wa.me/5493764415624" class="text-gray-400 hover:text-primary transition">+54 9 3764 415624</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <span class="text-gray-400">Posadas, Misiones</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 Skin&Make. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Cart functionality
+        const cartToggle = document.getElementById('cart-toggle');
+        const closeCart = document.getElementById('close-cart');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartTotal = document.getElementById('cart-total');
+        const shippingOption = document.getElementById('shipping-option');
+        const paymentMethods = document.querySelectorAll('input[name="payment"]');
+        const transferInfo = document.getElementById('transfer-info');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        
+        let cart = [];
+        
+        // Toggle cart sidebar
+        cartToggle.addEventListener('click', () => {
+            cartSidebar.classList.remove('translate-x-full');
+            cartOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        cartOverlay.addEventListener('click', () => {
+            cartSidebar.classList.add('translate-x-full');
+            cartOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.getAttribute('data-id');
+                const productName = button.getAttribute('data-name');
+                const productPrice = parseInt(button.getAttribute('data-price'));
+                const productImage = button.getAttribute('data-image');
+                
+                addToCart(productId, productName, productPrice, productImage);
+                
+                // Show cart sidebar when adding first item
+                if (cart.length === 1) {
+                    cartSidebar.classList.remove('translate-x-full');
+                    cartOverlay.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+        }
+        
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+        
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items display
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartItemsContainer.innerHTML = '';
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                
+                let itemsHTML = '';
+                cart.forEach(item => {
+                    itemsHTML += `
+                        <div class="cart-item bg-gray-50 p-3 rounded-lg flex items-center">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-bold text-gray-800">${item.name}</h4>
+                                <div class="flex justify-between items-center mt-1">
+                                    <div class="flex items-center">
+                                        <button class="quantity-btn text-gray-500 hover:text-accent" data-id="${item.id}" data-action="decrease">
+                                            <i class="fas fa-minus text-xs"></i>
+                                        </button>
+                                        <span class="mx-2">${item.quantity}</span>
+                                        <button class="quantity-btn text-gray-500 hover:text-accent" data-id="${item.id}" data-action="increase">
+                                            <i class="fas fa-plus text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <span class="font-bold text-accent">$${(item.price * item.quantity).toLocaleString()}</span>
+                                </div>
+                            </div>
+                            <button class="remove-btn text-gray-400 hover:text-red-500 ml-2" data-id="${item.id}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+                
+                cartItemsContainer.innerHTML = itemsHTML;
+                
+                // Add event listeners to new buttons
+                document.querySelectorAll('.quantity-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.getAttribute('data-id');
+                        const action = button.getAttribute('data-action');
+                        
+                        const item = cart.find(item => item.id === id);
+                        
+                        if (action === 'increase') {
+                            item.quantity += 1;
+                        } else if (action === 'decrease' && item.quantity > 1) {
+                            item.quantity -= 1;
+                        }
+                        
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.getAttribute('data-id');
+                        removeFromCart(id);
+                    });
+                });
+            }
+            
+            // Update subtotal and total
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            cartSubtotal.textContent = `$${subtotal.toLocaleString()}`;
+            
+            const shippingCost = shippingOption.value === 'national' ? 1500 : 0;
+            const total = subtotal + shippingCost;
+            cartTotal.textContent = `$${total.toLocaleString()}`;
+        }
+        
+        // Shipping option change
+        shippingOption.addEventListener('change', () => {
+            updateCart();
+        });
+        
+        // Payment method change
+        paymentMethods.forEach(method => {
+            method.addEventListener('change', () => {
+                if (method.value === 'efectivo') {
+                    transferInfo.classList.remove('hidden');
+                } else {
+                    transferInfo.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Checkout button
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const shippingMethod = shippingOption.value;
+            
+            let message = `¡Hola Skin&Make! Quiero realizar el siguiente pedido:\n\n`;
+            
+            cart.forEach(item => {
+                message += `${item.name} x ${item.quantity} - $${(item.price * item.quantity).toLocaleString()}\n`;
+            });
+            
+            message += `\nSubtotal: $${cartSubtotal.textContent.replace('$', '')}\n`;
+            
+            if (shippingMethod === 'national') {
+            } else {
+                message += `Envío: A coordinar\n`;
+            }
+            
+            message += `Total: $${cartTotal.textContent.replace('$', '')}\n\n`;
+            message += `Método de pago: ${paymentMethod === 'mercado-pago' ? 'Mercado Pago' : paymentMethod === 'paypal' ? 'PayPal' : 'Efectivo (Transferencia)'}\n`;
+            
+            if (paymentMethod === 'efectivo') {
+                message += `\nDatos para transferencia:\n`;
+                message += `Titular: Abril Tabarez\n`;
+                message += `CBU: 0000003100075284014867\n`;
+            }
+            
+            message += `\nPor favor confirmame disponibilidad y forma de envío. ¡Gracias!`;
+            
+            const whatsappUrl = `https://wa.me/5493764415624?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copiado al portapapeles: ' + text);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+        
+        // Search functionality
+        const searchInput = document.getElementById('product-search');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const searchResults = document.getElementById('search-results');
+        const searchContainer = document.getElementById('search-container');
+        const productsGrid = document.getElementById('products-grid');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        // Focus styles for search container
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('focused');
+        });
+        
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('focused');
+        });
+        
+        // Clear search button
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value.length > 0) {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+                searchResults.classList.add('hidden');
+                // Show all products when search is cleared
+                productCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            }
+        });
+        
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            searchResults.classList.add('hidden');
+            // Show all products when search is cleared
+            productCards.forEach(card => {
+                card.style.display = 'block';
+            });
+        });
+        
+        // Search functionality
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            if (searchTerm.length === 0) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+            
+            // Filter products
+            const filteredProducts = Array.from(productCards).filter(card => {
+                const productName = card.getAttribute('data-name').toLowerCase();
+                const productCategory = card.getAttribute('data-category').toLowerCase();
+                return productName.includes(searchTerm) || productCategory.includes(searchTerm);
+            });
+            
+            // Update search results dropdown
+            if (filteredProducts.length > 0) {
+                let resultsHTML = '';
+                
+                filteredProducts.forEach(card => {
+                    const productName = card.querySelector('h3').textContent;
+                    const productPrice = card.querySelector('span.font-bold').textContent;
+                    const productImage = card.querySelector('img').src;
+                    
+                    resultsHTML += `
+                        <div class="p-3 hover:bg-gray-100 cursor-pointer flex items-center border-b border-gray-100 last:border-0" 
+                             data-id="${card.getAttribute('data-id')}">
+                            <img src="${productImage}" alt="${productName}" class="w-10 h-10 object-cover rounded mr-3">
+                            <div>
+                                <div class="font-medium">${productName}</div>
+                                <div class="text-sm text-accent">${productPrice}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                searchResults.innerHTML = resultsHTML;
+                searchResults.classList.remove('hidden');
+                
+                // Add click event to search results
+                searchResults.querySelectorAll('div').forEach(result => {
+                    result.addEventListener('click', () => {
+                        const productId = result.getAttribute('data-id');
+                        const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
+                        
+                        // Scroll to product
+                        productCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Highlight product
+                        productCard.classList.add('ring-2', 'ring-accent');
+                        setTimeout(() => {
+                            productCard.classList.remove('ring-2', 'ring-accent');
+                        }, 2000);
+                        
+                        // Close search results
+                        searchResults.classList.add('hidden');
+                    });
+                });
+            } else {
+                searchResults.innerHTML = '<div class="p-3 text-gray-500">No se encontraron productos</div>';
+                searchResults.classList.remove('hidden');
+            }
+            
+            // Filter products in grid
+            productCards.forEach(card => {
+                const productName = card.getAttribute('data-name').toLowerCase();
+                const productCategory = card.getAttribute('data-category').toLowerCase();
+                
+                if (productName.includes(searchTerm) || productCategory.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target)) {
+                searchResults.classList.add('hidden');
+            }
+        });
+        
+        // Initialize cart
+        updateCart();
+    </script>
+</body>
+</html>
